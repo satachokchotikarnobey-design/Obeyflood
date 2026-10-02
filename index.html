@@ -9,8 +9,8 @@
 body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Thai",sans-serif;background:#eef7f5;color:#174b3d}
 button,input{font:inherit}button{cursor:pointer}
 .top{background:#191b20;color:#fff;padding:14px 16px 10px;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px #0002}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px}
-.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.brand .logo{width:48px;height:48px;border-radius:50%;background:#0d4d2c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;border:3px solid #e5bd00;flex:none}
 .subbrand{font-size:13px;color:#d8e8e3;margin:3px 0 0 58px}
 main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .notice{background:#fff5ce;border:1px solid #eadca0;border-radius:18px;padding:14px;margin-bottom:14px;color:#66551d}
@@ -19,18 +19,10 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .search{display:flex;gap:8px}
 .search input{flex:1;min-width:0;border:1px solid #d7e5e1;border-radius:14px;padding:13px 14px;outline:none}
 .btn{border:0;border-radius:14px;padding:12px 15px;background:#087d54;color:#fff;font-weight:800}
-.btn.alt{background:#e8f4f0;color:#17634e}
-.btn.red{background:#c93636}
 .loc{width:100%;margin-top:10px;font-size:16px}
 .chips{display:flex;gap:8px;margin-top:10px}
 .chip{flex:1;border:1px solid #d7e5e1;background:#f4f8f7;border-radius:24px;padding:10px 6px;font-weight:800;color:#294d43}
 .chip.on{background:#d7f1e7;border-color:#83c8ae}
-#mapbox{height:350px;border-radius:18px;overflow:hidden;background:#dcebe7;position:relative}
-#map{width:100%;height:100%;min-height:350px;background:#dcebe7}
-.mapcover{position:absolute;left:12px;top:12px;background:#fff;box-shadow:0 2px 8px #0002;border-radius:12px;padding:8px 10px;font-size:12px;font-weight:700;z-index:500}
-.layers{display:flex;gap:8px;overflow:auto;padding-bottom:2px}
-.layer{white-space:nowrap;border:1px solid #d7e5e1;background:#f4f8f7;border-radius:22px;padding:10px 16px;font-weight:800;color:#264b40}
-.layer.on{background:#d7f1e7;border-color:#83c8ae}
 .status{display:flex;align-items:center;gap:10px}
 .badge{padding:7px 12px;border-radius:18px;font-weight:900}
 .b-ok{background:#d9f3e4;color:#147141}
@@ -49,9 +41,8 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .helpbox{line-height:1.65}
 .helpnum{font-size:22px;font-weight:900}
 .source{font-size:12px;color:#637b73;margin-top:7px}
-@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.search .btn{padding:12px 11px}.title{font-size:23px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.title{font-size:23px}}
 
-/* ป้ายระดับน้ำท่วม */
 .flood-levels{margin:14px 0 0;padding:18px;border-radius:20px;background:#fff;border:1px solid #dce9e5;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .flood-levels h3{margin:0 0 14px;font-size:20px;color:#174d43}
 .flood-level{display:flex;align-items:center;gap:14px;min-height:52px;padding:7px 0;color:#24443e}
@@ -63,7 +54,6 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .flood-yellow{background:#f2c400;color:#f2c400}
 .flood-green{background:#31a464;color:#31a464}
 
-/* รูปคน + ระดับน้ำ */
 .water-visual-wrap{margin-top:16px;padding:16px;background:#f4f8f7;border-radius:18px;border:1px solid #e4efec}
 .water-visual-wrap h4{margin:0 0 12px;font-size:16px;color:#174d43}
 .water-visual{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
@@ -75,7 +65,6 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .water-person .active-tag{display:none;margin-top:4px;font-size:11px;font-weight:800;color:#087d54}
 .water-person.active .active-tag{display:block}
 
-/* สถานะรถ */
 .vehicle-status{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
 .vehicle-item{background:#f4f8f7;border-radius:12px;padding:11px 10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
 .vehicle-item .icon{font-size:22px;line-height:1}
@@ -83,7 +72,6 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .vehicle-item .txt small{font-size:11px;font-weight:600;opacity:.85;margin-top:2px}
 .vehicle-item.ok{background:#d9f3e4;color:#147141}
 .vehicle-item.no{background:#ffd8d8;color:#9c2424}
-.vehicle-item.warn{background:#fff0bc;color:#80600b}
 .road-status{margin-top:12px;padding:13px;border-radius:14px;font-weight:800;text-align:center;font-size:15px}
 .road-ok{background:#d9f3e4;color:#147141}
 .road-warn{background:#fff0bc;color:#80600b}
@@ -92,7 +80,10 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 </head>
 <body>
 <header class="top">
- <div class="brand"><span>OBEYFLOOD • พยากรณ์อากาศ Real Time</span></div>
+ <div class="brand">
+   <div class="logo">OF</div>
+   <span>OBEYFLOOD • พยากรณ์อากาศ Real Time</span>
+ </div>
  <div class="subbrand">พยากรณ์อากาศ Real Time • ประเมินความเสี่ยงน้ำท่วม</div>
 </header>
 
@@ -120,29 +111,13 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
   <div id="weather"><div class="muted">กำลังเตรียมข้อมูลพื้นที่เริ่มต้น…</div></div>
  </div>
 
- <div class="card">
-  <h2 class="title" style="font-size:22px">แผนที่สถานการณ์</h2>
-  <div class="layers">
-    <button class="layer on" data-layer="all">ทั้งหมด</button>
-    <button class="layer" data-layer="flood">🌊 ระดับน้ำท่วม</button>
-  </div>
-  <div id="mapbox" style="margin-top:12px">
-    <div id="map"></div>
-    <div class="mapcover" id="mapmsg">แผนที่ OBEYFLOOD</div>
-  </div>
-  <div class="source">ระดับน้ำท่วม: ประเมินจากฝนสะสม 48 ชม. • ฝน: Open-Meteo</div>
- </div>
-
  <div class="flood-levels" id="floodLevels">
   <h3>🌊 ระดับน้ำท่วมที่ประเมินได้</h3>
-  <div id="floodLevelBody">
-    <div class="muted">กำลังประเมิน…</div>
-  </div>
+  <div id="floodLevelBody"><div class="muted">กำลังประเมิน…</div></div>
 
   <div class="water-visual-wrap">
     <h4>📏 เทียบระดับน้ำกับร่างกายคน</h4>
     <div class="water-visual" id="waterVisual">
-      <!-- ตาตุ่ม -->
       <div class="water-person" data-level="ankle">
         <svg width="60" height="90" viewBox="0 0 60 90">
           <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
@@ -151,11 +126,9 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
           <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
           <rect x="0" y="80" width="60" height="10" fill="#31a464" opacity="0.85"/>
         </svg>
-        <b>ตาตุ่ม</b>
-        <small>0–35 มม.</small>
+        <b>ตาตุ่ม</b><small>0–35 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
-      <!-- เข่า -->
       <div class="water-person" data-level="knee">
         <svg width="60" height="90" viewBox="0 0 60 90">
           <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
@@ -164,11 +137,9 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
           <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
           <rect x="0" y="58" width="60" height="32" fill="#f2c400" opacity="0.85"/>
         </svg>
-        <b>เข่า</b>
-        <small>35–70 มม.</small>
+        <b>เข่า</b><small>35–70 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
-      <!-- เอว -->
       <div class="water-person" data-level="waist">
         <svg width="60" height="90" viewBox="0 0 60 90">
           <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
@@ -177,11 +148,9 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
           <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
           <rect x="0" y="40" width="60" height="50" fill="#ff8500" opacity="0.85"/>
         </svg>
-        <b>เอว</b>
-        <small>70–120 มม.</small>
+        <b>เอว</b><small>70–120 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
-      <!-- คอ -->
       <div class="water-person" data-level="neck">
         <svg width="60" height="90" viewBox="0 0 60 90">
           <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
@@ -190,8 +159,7 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
           <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
           <rect x="0" y="22" width="60" height="68" fill="#ef3030" opacity="0.85"/>
         </svg>
-        <b>คอ</b>
-        <small>&gt;120 มม.</small>
+        <b>คอ</b><small>&gt;120 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
     </div>
@@ -237,15 +205,11 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
  <button class="tab" data-view="help">❗<br>ขอความช่วยเหลือ</button>
 </nav>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 
-let lat = 13.7563, lon = 100.5018, name = "เขตคลองสามวา", radius = 10;
-let leafletMap = null, marker = null;
-let activeLayer = "all";
+let lat = 13.7563, lon = 100.5018, name = "เขตคลองสามวา";
 let lastRain48 = 0;
 
 /* ---------- fetch with timeout (กันค้าง) ---------- */
@@ -261,31 +225,7 @@ async function fetchT(url, opts = {}, ms = 8000) {
   }
 }
 
-/* ---------- MAP ---------- */
-function setMap(a, b, label) {
-  lat = +a; lon = +b; name = label || "ตำแหน่งที่เลือก";
-  if (!leafletMap) {
-    leafletMap = L.map("map", { zoomControl: true }).setView([lat, lon], 11);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19, attribution: "© OpenStreetMap contributors"
-    }).addTo(leafletMap);
-  } else {
-    leafletMap.setView([lat, lon], 11);
-  }
-  if (marker) marker.remove();
-  marker = L.marker([lat, lon]).addTo(leafletMap).bindPopup(`<b>${esc(name)}</b>`).openPopup();
-
-  // วงกลมประเมินน้ำท่วมรอบจุด
-  if (window._zoneCircle) { try { leafletMap.removeLayer(window._zoneCircle); } catch(e){} }
-  window._zoneCircle = L.circle([lat, lon], {
-    radius: 1500, color: "#2578b9", fillColor: "#2578b9", fillOpacity: 0.08, weight: 1.5
-  }).addTo(leafletMap);
-
-  $("mapmsg").textContent = `${name} • ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-  setTimeout(() => leafletMap.invalidateSize(), 150);
-}
-
-/* ---------- ประเมินระดับน้ำท่วมจากฝนสะสม 48 ชม. ---------- */
+/* ---------- ประเมินระดับน้ำท่วม ---------- */
 function floodLevelFromRain(rain48) {
   const r = Number(rain48) || 0;
   if (r >= 120) return {
@@ -314,9 +254,8 @@ function floodLevelFromRain(rain48) {
   };
 }
 
-/* ---------- วาดการ์ดระดับน้ำท่วม + รูปคน + สถานะรถ ---------- */
+/* ---------- วาดการ์ดระดับน้ำ + รูปคน + สถานะรถ ---------- */
 function renderFloodPanel(levelInfo, rain48) {
-  // การ์ดระดับน้ำด้านบน
   $("floodLevelBody").innerHTML = `
     <div class="status" style="margin-bottom:14px">
       <span class="badge ${levelInfo.badge}">${levelInfo.text}</span>
@@ -341,12 +280,10 @@ function renderFloodPanel(levelInfo, rain48) {
     </div>
   `;
 
-  // ไฮไลต์รูปคน
   document.querySelectorAll(".water-person").forEach(el => {
     el.classList.toggle("active", el.dataset.level === levelInfo.key);
   });
 
-  // สถานะรถ
   const v = levelInfo.vehicles;
   const items = [
     { icon: "🚲", name: "จักรยาน", ok: v.bicycle },
@@ -409,32 +346,15 @@ async function weather(a, b, label) {
       <div class="source">พยากรณ์ฝน/อุณหภูมิ: Open-Meteo • ระดับน้ำท่วมเป็นการประเมินจากฝน ไม่ใช่ระดับน้ำจริง</div>
     `;
 
-    // อัปเดตการ์ดระดับน้ำท่วม + รูปคน + สถานะรถ
     renderFloodPanel(level, rain48);
-
-    // อัปเดตวงกลมบนแผนที่ตามระดับน้ำ
-    if (window._zoneCircle) {
-      window._zoneCircle.setStyle({
-        color: level.color, fillColor: level.color, fillOpacity: 0.15
-      });
-    }
-
     return d;
   } catch (e) {
     console.error(e);
     $("weather").innerHTML = '<div class="muted">เชื่อมต่อข้อมูลอากาศไม่ได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง</div>';
-    $("floodLevelBody").innerHTML = '<div class="muted">ไม่สามารถประเมินได้</div>';
+    // แสดงค่าปกติไปก่อน เพื่อไม่ให้ค้าง
+    renderFloodPanel(floodLevelFromRain(0), 0);
   }
 }
-
-/* ---------- LAYERS (มีแค่ all / flood แล้ว) ---------- */
-async function showLayer(type) {
-  activeLayer = type;
-  document.querySelectorAll(".layer").forEach(x => x.classList.toggle("on", x.dataset.layer === type));
-  // โครงสร้างนี้เตรียมไว้ต่อยอด layer อื่นได้ในอนาคต
-}
-
-document.querySelectorAll(".layer").forEach(btn => btn.onclick = () => showLayer(btn.dataset.layer));
 
 /* ---------- TABS ---------- */
 document.querySelectorAll(".tab").forEach(btn => btn.onclick = () => {
@@ -443,22 +363,19 @@ document.querySelectorAll(".tab").forEach(btn => btn.onclick = () => {
   btn.classList.add("on");
   $(btn.dataset.view).classList.add("on");
   if (btn.dataset.view === "overview") loadNational();
-  if (btn.dataset.view === "near" && leafletMap) setTimeout(() => leafletMap.invalidateSize(), 120);
 });
 
-/* ---------- CHIPS (รัศมี) ---------- */
+/* ---------- CHIPS ---------- */
 document.querySelectorAll(".chip").forEach(btn => btn.onclick = () => {
   document.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
   btn.classList.add("on");
-  radius = +btn.dataset.r;
-  if (window._zoneCircle) window._zoneCircle.setRadius(radius * 150);
 });
 
 /* ---------- SEARCH ---------- */
 async function searchPlace() {
   const q = $("q").value.trim();
   if (!q) return;
-  $("mapmsg").textContent = "🔎 กำลังค้นหาสถานที่…";
+  $("weather").innerHTML = '<div class="muted">🔎 กำลังค้นหา…</div>';
   try {
     const d = await fetchT(
       "https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=th&q=" +
@@ -466,7 +383,7 @@ async function searchPlace() {
     if (d[0]) {
       const newLat = +d[0].lat, newLon = +d[0].lon;
       const newName = d[0].display_name.split(",")[0] || q;
-      setMap(newLat, newLon, newName);
+      lat = newLat; lon = newLon; name = newName;
       await weather(newLat, newLon, newName);
     } else {
       $("weather").innerHTML = '<div class="muted">ไม่พบสถานที่ ลองชื่อจังหวัด เขต อำเภอ หรือสถานที่อื่น</div>';
@@ -487,15 +404,14 @@ $("locBtn").onclick = () => {
   }
   $("weather").innerHTML = '<div class="muted">📍 กำลังขอตำแหน่งปัจจุบัน…</div>';
   navigator.geolocation.getCurrentPosition(async pos => {
-    const newLat = pos.coords.latitude, newLon = pos.coords.longitude;
-    setMap(newLat, newLon, "ตำแหน่งปัจจุบัน");
-    await weather(newLat, newLon, "ตำแหน่งปัจจุบัน");
+    lat = pos.coords.latitude; lon = pos.coords.longitude; name = "ตำแหน่งปัจจุบัน";
+    await weather(lat, lon, name);
   }, () => {
     $("weather").innerHTML = '<div class="muted">ไม่สามารถเข้าถึงตำแหน่งได้ กรุณาอนุญาต Location</div>';
   }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
 };
 
-/* ---------- NATIONAL OVERVIEW ---------- */
+/* ---------- NATIONAL ---------- */
 async function loadNational() {
   const places = [
     ["กรุงเทพฯ", 13.7563, 100.5018],
@@ -507,12 +423,11 @@ async function loadNational() {
     `<div class="card"><b>${p[0]}</b><div id="n${i}" class="muted">กำลังดึงข้อมูล…</div></div>`
   ).join("");
 
-  // ใช้ allSettled กันค้าง
   await Promise.allSettled(places.map(async (p, i) => {
     try {
       const d = await fetchT(
         `https://api.open-meteo.com/v1/forecast?latitude=${p[1]}&longitude=${p[2]}` +
-        `&current=temperature_2m,precipitation&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`,
+        `&current=temperature_2m&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`,
         {}, 8000);
       const r = (d.hourly?.precipitation || []).slice(0, 48)
         .reduce((x, y) => x + (Number(y) || 0), 0);
@@ -531,11 +446,8 @@ async function loadNational() {
 }
 
 /* ---------- INIT ---------- */
-setMap(lat, lon, name);
 weather(lat, lon, name);
-
-// รีเฟรชทุก 10 นาที
 setInterval(() => weather(lat, lon, name), 600000);
 </script>
 </body>
-  </html>
+</html>
