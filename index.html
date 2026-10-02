@@ -23,7 +23,7 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .chips{display:flex;gap:8px;margin-top:10px}
 .chip{flex:1;border:1px solid #d7e5e1;background:#f4f8f7;border-radius:24px;padding:10px 6px;font-weight:800;color:#294d43}
 .chip.on{background:#d7f1e7;border-color:#83c8ae}
-.status{display:flex;align-items:center;gap:10px}
+.status{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .badge{padding:7px 12px;border-radius:18px;font-weight:900}
 .b-ok{background:#d9f3e4;color:#147141}
 .b-watch{background:#fff0bc;color:#80600b}
@@ -76,6 +76,13 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 .road-ok{background:#d9f3e4;color:#147141}
 .road-warn{background:#fff0bc;color:#80600b}
 .road-no{background:#ffd8d8;color:#9c2424}
+
+/* GISTDA flood info box */
+.gistda-box{margin-top:14px;padding:14px;border-radius:14px;background:#eef7ff;border:1px solid #c3daf0}
+.gistda-box h5{margin:0 0 8px;font-size:14px;color:#1a5490}
+.gistda-box .row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px dashed #c3daf0}
+.gistda-box .row:last-child{border-bottom:0}
+.gistda-box .row b{color:#1a5490}
 </style>
 </head>
 <body>
@@ -89,7 +96,7 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 
 <main>
 <section id="near" class="view on">
- <div class="notice">⚠️ ระดับน้ำท่วมเป็นการประเมินจากข้อมูลฝน ไม่ใช่เครื่องวัดระดับน้ำจริง ควรตรวจสอบประกาศทางการ</div>
+ <div class="notice">⚠️ ระดับน้ำท่วมประเมินจากข้อมูล GISTDA (ภาพถ่ายดาวเทียม) + ฝน Open-Meteo</div>
 
  <div class="card">
   <h1 class="title">จะตรวจอากาศที่ไหน?</h1>
@@ -119,46 +126,22 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
     <h4>📏 เทียบระดับน้ำกับร่างกายคน</h4>
     <div class="water-visual" id="waterVisual">
       <div class="water-person" data-level="ankle">
-        <svg width="60" height="90" viewBox="0 0 60 90">
-          <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
-          <rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/>
-          <rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="0" y="80" width="60" height="10" fill="#31a464" opacity="0.85"/>
-        </svg>
+        <svg width="60" height="90" viewBox="0 0 60 90"><circle cx="30" cy="14" r="10" fill="#9bb7ae"/><rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/><rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="0" y="80" width="60" height="10" fill="#31a464" opacity="0.85"/></svg>
         <b>ตาตุ่ม</b><small>0–35 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
       <div class="water-person" data-level="knee">
-        <svg width="60" height="90" viewBox="0 0 60 90">
-          <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
-          <rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/>
-          <rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="0" y="58" width="60" height="32" fill="#f2c400" opacity="0.85"/>
-        </svg>
+        <svg width="60" height="90" viewBox="0 0 60 90"><circle cx="30" cy="14" r="10" fill="#9bb7ae"/><rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/><rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="0" y="58" width="60" height="32" fill="#f2c400" opacity="0.85"/></svg>
         <b>เข่า</b><small>35–70 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
       <div class="water-person" data-level="waist">
-        <svg width="60" height="90" viewBox="0 0 60 90">
-          <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
-          <rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/>
-          <rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="0" y="40" width="60" height="50" fill="#ff8500" opacity="0.85"/>
-        </svg>
+        <svg width="60" height="90" viewBox="0 0 60 90"><circle cx="30" cy="14" r="10" fill="#9bb7ae"/><rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/><rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="0" y="40" width="60" height="50" fill="#ff8500" opacity="0.85"/></svg>
         <b>เอว</b><small>70–120 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
       <div class="water-person" data-level="neck">
-        <svg width="60" height="90" viewBox="0 0 60 90">
-          <circle cx="30" cy="14" r="10" fill="#9bb7ae"/>
-          <rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/>
-          <rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/>
-          <rect x="0" y="22" width="60" height="68" fill="#ef3030" opacity="0.85"/>
-        </svg>
+        <svg width="60" height="90" viewBox="0 0 60 90"><circle cx="30" cy="14" r="10" fill="#9bb7ae"/><rect x="24" y="26" width="12" height="30" rx="5" fill="#9bb7ae"/><rect x="20" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="32" y="56" width="8" height="28" rx="3" fill="#9bb7ae"/><rect x="0" y="22" width="60" height="68" fill="#ef3030" opacity="0.85"/></svg>
         <b>คอ</b><small>&gt;120 มม.</small>
         <div class="active-tag">← ตอนนี้</div>
       </div>
@@ -175,13 +158,17 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
     </div>
     <div class="road-status" id="roadStatus">กำลังประเมินสภาพถนน…</div>
   </div>
+
+  <div class="gistda-box" id="gistdaBox" style="display:none">
+    <h5>🛰️ ข้อมูลน้ำท่วมจาก GISTDA (ดาวเทียม)</h5>
+    <div id="gistdaBody"></div>
+  </div>
  </div>
 </section>
 
 <section id="overview" class="view">
  <div class="card"><h1 class="title">🇹🇭 ภาพรวมประเทศไทย</h1><p class="muted">ข้อมูลสภาพอากาศตัวอย่างจากหลายพื้นที่</p></div>
  <div id="national" class="grid"></div>
- <div class="card"><h2 class="title" style="font-size:21px">📡 แหล่งข้อมูล</h2><div class="source">Open-Meteo: พยากรณ์ฝนและอุณหภูมิ • ระดับน้ำท่วมประเมินจากฝนสะสม</div></div>
 </section>
 
 <section id="help" class="view">
@@ -192,10 +179,8 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
     <p>🚑 การแพทย์ฉุกเฉิน: <span class="helpnum">1669</span></p>
     <p>🚒 ดับเพลิง/กู้ภัย: <span class="helpnum">199</span></p>
     <p>🌊 สายด่วนนิรภัย: <span class="helpnum">1784</span></p>
-    <p class="muted">ถ้าน้ำกำลังเพิ่มสูง ให้ย้ายไปยังพื้นที่ปลอดภัยและติดตามประกาศจากหน่วยงานท้องถิ่น</p>
   </div>
  </div>
- <div class="card"><h2 class="title" style="font-size:21px">📢 แหล่งประกาศ</h2><p>ตรวจสอบประกาศจากกรมอุตุนิยมวิทยา หน่วยงานท้องถิ่น และหน่วยงานป้องกันและบรรเทาสาธารณภัย</p></div>
 </section>
 </main>
 
@@ -206,14 +191,18 @@ main{padding:14px 16px 92px;max-width:760px;margin:auto}
 </nav>
 
 <script>
+/* ============ ตั้งค่าตรงนี้ ============ */
+const GISTDA_KEY = "YylTRNBzOi5F8FW7QCsjuQTLjLD6X9YsPLIN02hEbKpakrlSAcupeOgT2nmFshuj";
+// ↑ แนะนำ: เปลี่ยนเป็น key ใหม่ เพราะ key นี้รั่วแล้ว
+/* ===================================== */
+
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 
 let lat = 13.7563, lon = 100.5018, name = "เขตคลองสามวา";
-let lastRain48 = 0;
 
-/* ---------- fetch with timeout (กันค้าง) ---------- */
-async function fetchT(url, opts = {}, ms = 8000) {
+/* ---------- fetch with timeout ---------- */
+async function fetchT(url, opts = {}, ms = 10000) {
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), ms);
   try {
@@ -225,36 +214,54 @@ async function fetchT(url, opts = {}, ms = 8000) {
   }
 }
 
-/* ---------- ประเมินระดับน้ำท่วม ---------- */
-function floodLevelFromRain(rain48) {
+/* ---------- proxy ผ่าน allorigins ---------- */
+const PROXY = "https://api.allorigins.win/raw?url=";
+const prox = url => PROXY + encodeURIComponent(url);
+
+/* ---------- ประเมินระดับน้ำจากปริมาณฝน (มม.) ---------- */
+function floodLevelFromRain(rain48, gistdaFlood) {
   const r = Number(rain48) || 0;
-  if (r >= 120) return {
+  // ถ้ามีข้อมูล GISTDA บอกว่ามีน้ำท่วมอยู่แล้ว → บังคับให้อย่างน้อย "เข่า"
+  const hasFlood = gistdaFlood && (gistdaFlood.f_area > 0 || gistdaFlood.flood);
+  let level;
+  if (r >= 120) level = {
     key: "neck", label: "ระดับคอ", color: "#ef3030", badge: "b-flood",
     text: "น้ำท่วมรุนแรง", desc: "ระดับอันตราย",
     vehicles: { bicycle: false, moto: false, sedan: false, pickup: false },
     roadStatus: "no", roadText: "🚫 รถทุกประเภทไม่สามารถสัญจรได้"
   };
-  if (r >= 70) return {
+  else if (r >= 70) level = {
     key: "waist", label: "ระดับเอว", color: "#ff8500", badge: "b-risk",
     text: "น้ำท่วมสูง", desc: "ควรระวังและติดตามสถานการณ์",
     vehicles: { bicycle: false, moto: false, sedan: false, pickup: false },
     roadStatus: "no", roadText: "🚫 รถทุกประเภทไม่สามารถสัญจรได้"
   };
-  if (r >= 35) return {
+  else if (r >= 35) level = {
     key: "knee", label: "ระดับเข่า", color: "#f2c400", badge: "b-watch",
     text: "เฝ้าระวังน้ำท่วม", desc: "ติดตามฝนและระดับน้ำ",
     vehicles: { bicycle: false, moto: false, sedan: false, pickup: true },
     roadStatus: "warn", roadText: "⚠️ รถกระบะสัญจรได้ด้วยความระมัดระวัง"
   };
-  return {
+  else level = {
     key: "ankle", label: "ระดับตาตุ่ม", color: "#31a464", badge: "b-ok",
     text: "ปกติ", desc: "รถทุกประเภทสัญจรได้",
     vehicles: { bicycle: true, moto: true, sedan: true, pickup: true },
     roadStatus: "ok", roadText: "✅ รถทุกประเภทสัญจรได้ตามปกติ"
   };
+
+  // ถ้า GISTDA รายงานว่ามีน้ำท่วมแต่ฝนน้อย → อย่างน้อย "เข่า"
+  if (hasFlood && level.key === "ankle") {
+    level = {
+      key: "knee", label: "ระดับเข่า", color: "#f2c400", badge: "b-watch",
+      text: "ดาวเทียมตรวจพบน้ำท่วม", desc: "GISTDA พบพื้นที่น้ำท่วม",
+      vehicles: { bicycle: false, moto: false, sedan: false, pickup: true },
+      roadStatus: "warn", roadText: "⚠️ รถกระบะสัญจรได้ด้วยความระมัดระวัง"
+    };
+  }
+  return level;
 }
 
-/* ---------- วาดการ์ดระดับน้ำ + รูปคน + สถานะรถ ---------- */
+/* ---------- วาดการ์ด ---------- */
 function renderFloodPanel(levelInfo, rain48) {
   $("floodLevelBody").innerHTML = `
     <div class="status" style="margin-bottom:14px">
@@ -262,28 +269,14 @@ function renderFloodPanel(levelInfo, rain48) {
       <span style="font-weight:800">${levelInfo.label}</span>
     </div>
     <div class="muted" style="margin-bottom:14px">ฝนสะสม 48 ชม. <b style="color:${levelInfo.color}">${rain48.toFixed(1)} มม.</b> • ${levelInfo.desc}</div>
-    <div class="flood-level">
-      <span class="flood-dot flood-red"></span>
-      <div><b>น้ำท่วมรุนแรง</b><small>ระดับอันตราย • ฝน &gt;120 มม.</small></div>
-    </div>
-    <div class="flood-level">
-      <span class="flood-dot flood-orange"></span>
-      <div><b>น้ำท่วมสูง</b><small>ควรระวัง • ฝน 70–120 มม.</small></div>
-    </div>
-    <div class="flood-level">
-      <span class="flood-dot flood-yellow"></span>
-      <div><b>เฝ้าระวังน้ำท่วม</b><small>ติดตามฝน • ฝน 35–70 มม.</small></div>
-    </div>
-    <div class="flood-level">
-      <span class="flood-dot flood-green"></span>
-      <div><b>ปกติ</b><small>ฝน &lt;35 มม.</small></div>
-    </div>
+    <div class="flood-level"><span class="flood-dot flood-red"></span><div><b>น้ำท่วมรุนแรง</b><small>ระดับอันตราย • ฝน &gt;120 มม.</small></div></div>
+    <div class="flood-level"><span class="flood-dot flood-orange"></span><div><b>น้ำท่วมสูง</b><small>ควรระวัง • ฝน 70–120 มม.</small></div></div>
+    <div class="flood-level"><span class="flood-dot flood-yellow"></span><div><b>เฝ้าระวังน้ำท่วม</b><small>ติดตามฝน • ฝน 35–70 มม.</small></div></div>
+    <div class="flood-level"><span class="flood-dot flood-green"></span><div><b>ปกติ</b><small>ฝน &lt;35 มม.</small></div></div>
   `;
-
   document.querySelectorAll(".water-person").forEach(el => {
     el.classList.toggle("active", el.dataset.level === levelInfo.key);
   });
-
   const v = levelInfo.vehicles;
   const items = [
     { icon: "🚲", name: "จักรยาน", ok: v.bicycle },
@@ -294,32 +287,75 @@ function renderFloodPanel(levelInfo, rain48) {
   $("vehicleStatus").innerHTML = items.map(it => {
     const cls = it.ok ? "ok" : "no";
     const txt = it.ok ? "สัญจรได้" : "ไม่แนะนำ";
-    return `<div class="vehicle-item ${cls}">
-      <span class="icon">${it.icon}</span>
-      <span class="txt"><b>${it.name}</b><small>${txt}</small></span>
-    </div>`;
+    return `<div class="vehicle-item ${cls}"><span class="icon">${it.icon}</span><span class="txt"><b>${it.name}</b><small>${txt}</small></span></div>`;
   }).join("");
-
   const rs = $("roadStatus");
   rs.className = "road-status road-" + levelInfo.roadStatus;
   rs.textContent = levelInfo.roadText;
 }
 
+/* ---------- GISTDA ---------- */
+async function fetchGistda(a, b) {
+  const u = `https://api-gateway.gistda.or.th/api/2.0/resources/gi-service/v1.0/disasters/flood-extent-1day?lat=${a}&lon=${b}&api_key=${GISTDA_KEY}`;
+  try {
+    const d = await fetchT(prox(u), {}, 10000);
+    return d;
+  } catch (e) {
+    console.warn("GISTDA fail:", e);
+    return null;
+  }
+}
+
+function renderGistda(g) {
+  const box = $("gistdaBox");
+  if (!g || (!g.f_area && !g.features?.length && !Array.isArray(g))) {
+    box.style.display = "none";
+    return;
+  }
+  box.style.display = "block";
+  // GISTDA อาจคืน { features: [...] } หรือ array ตรง ๆ
+  const item = Array.isArray(g) ? g[0] : (g.features?.[0]?.properties || g);
+  const fields = [
+    ["พื้นที่น้ำท่วม", item.f_area ? `${(+item.f_area).toLocaleString()} ตร.ม.` : null],
+    ["จังหวัด", item.province_name],
+    ["อำเภอ", item.amphoe_name],
+    ["ตำบล", item.tambon_name],
+    ["วันที่", item.flood_date],
+    ["บ้านเรือนกระทบ", item.building],
+    ["ประชากรกระทบ", item.population],
+    ["ถนนกระทบ", item.length_road ? `${item.length_road} ม.` : null]
+  ].filter(x => x[1]);
+
+  if (!fields.length) {
+    box.style.display = "none";
+    return;
+  }
+  $("gistdaBody").innerHTML = fields.map(([k, v]) =>
+    `<div class="row"><span>${esc(k)}</span><b>${esc(v)}</b></div>`
+  ).join("");
+}
+
 /* ---------- WEATHER ---------- */
 async function weather(a, b, label) {
-  $("weather").innerHTML = '<div class="muted">กำลังดึงข้อมูลสภาพอากาศแบบเรียลไทม์…</div>';
+  $("weather").innerHTML = '<div class="muted">กำลังดึงข้อมูล…</div>';
   try {
-    const u = `https://api.open-meteo.com/v1/forecast?latitude=${a}&longitude=${b}` +
-              `&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code,wind_speed_10m` +
-              `&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`;
-    const d = await fetchT(u, {}, 8000);
+    // ดึง 3 อย่างพร้อมกัน — ตัวไหนพังไม่ลากตัวอื่น
+    const [wx, gd] = await Promise.allSettled([
+      fetchT(
+        `https://api.open-meteo.com/v1/forecast?latitude=${a}&longitude=${b}` +
+        `&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code,wind_speed_10m` +
+        `&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`, {}, 9000),
+      fetchGistda(a, b)
+    ]);
 
-    const rain48 = (d.hourly?.precipitation || [])
-      .slice(0, 48)
+    if (wx.status !== "fulfilled") throw new Error("weather fail");
+    const d = wx.value;
+    const gistdaData = gd.status === "fulfilled" ? gd.value : null;
+
+    const rain48 = (d.hourly?.precipitation || []).slice(0, 48)
       .reduce((x, y) => x + (Number(y) || 0), 0);
-    lastRain48 = rain48;
 
-    const level = floodLevelFromRain(rain48);
+    const level = floodLevelFromRain(rain48, gistdaData);
     const code = Number(d.current?.weather_code);
     const weatherText = code === 0 ? "ท้องฟ้าแจ่มใส"
       : code <= 3 ? "มีเมฆบางส่วน"
@@ -343,16 +379,17 @@ async function weather(a, b, label) {
         <div class="mini"><b>${Math.round(d.current?.relative_humidity_2m ?? 0)}%</b>ความชื้น</div>
         <div class="mini"><b>${Math.round(d.current?.wind_speed_10m ?? 0)} กม./ชม.</b>ลม</div>
       </div>
-      <div class="source">พยากรณ์ฝน/อุณหภูมิ: Open-Meteo • ระดับน้ำท่วมเป็นการประเมินจากฝน ไม่ใช่ระดับน้ำจริง</div>
+      <div class="source">พยากรณ์ฝน: Open-Meteo • น้ำท่วม: GISTDA</div>
     `;
 
     renderFloodPanel(level, rain48);
+    renderGistda(gistdaData);
     return d;
   } catch (e) {
     console.error(e);
-    $("weather").innerHTML = '<div class="muted">เชื่อมต่อข้อมูลอากาศไม่ได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง</div>';
-    // แสดงค่าปกติไปก่อน เพื่อไม่ให้ค้าง
-    renderFloodPanel(floodLevelFromRain(0), 0);
+    $("weather").innerHTML = '<div class="muted">เชื่อมต่อไม่ได้ กรุณาลองใหม่</div>';
+    renderFloodPanel(floodLevelFromRain(0, null), 0);
+    $("gistdaBox").style.display = "none";
   }
 }
 
@@ -365,7 +402,6 @@ document.querySelectorAll(".tab").forEach(btn => btn.onclick = () => {
   if (btn.dataset.view === "overview") loadNational();
 });
 
-/* ---------- CHIPS ---------- */
 document.querySelectorAll(".chip").forEach(btn => btn.onclick = () => {
   document.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
   btn.classList.add("on");
@@ -378,19 +414,18 @@ async function searchPlace() {
   $("weather").innerHTML = '<div class="muted">🔎 กำลังค้นหา…</div>';
   try {
     const d = await fetchT(
-      "https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=th&q=" +
-      encodeURIComponent(q), {}, 8000);
+      prox("https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=th&q=" + encodeURIComponent(q)),
+      {}, 9000);
     if (d[0]) {
-      const newLat = +d[0].lat, newLon = +d[0].lon;
-      const newName = d[0].display_name.split(",")[0] || q;
-      lat = newLat; lon = newLon; name = newName;
-      await weather(newLat, newLon, newName);
+      lat = +d[0].lat; lon = +d[0].lon;
+      name = d[0].display_name.split(",")[0] || q;
+      await weather(lat, lon, name);
     } else {
-      $("weather").innerHTML = '<div class="muted">ไม่พบสถานที่ ลองชื่อจังหวัด เขต อำเภอ หรือสถานที่อื่น</div>';
+      $("weather").innerHTML = '<div class="muted">ไม่พบสถานที่</div>';
     }
   } catch (e) {
     console.error(e);
-    $("weather").innerHTML = '<div class="muted">ค้นหาสถานที่ไม่สำเร็จ กรุณาลองอีกครั้ง</div>';
+    $("weather").innerHTML = '<div class="muted">ค้นหาไม่สำเร็จ</div>';
   }
 }
 $("searchBtn").onclick = searchPlace;
@@ -398,16 +433,13 @@ $("q").addEventListener("keydown", e => { if (e.key === "Enter") searchPlace(); 
 
 /* ---------- GEO ---------- */
 $("locBtn").onclick = () => {
-  if (!navigator.geolocation) {
-    $("weather").innerHTML = '<div class="muted">อุปกรณ์ไม่รองรับ Location</div>';
-    return;
-  }
-  $("weather").innerHTML = '<div class="muted">📍 กำลังขอตำแหน่งปัจจุบัน…</div>';
+  if (!navigator.geolocation) { $("weather").innerHTML = '<div class="muted">ไม่รองรับ Location</div>'; return; }
+  $("weather").innerHTML = '<div class="muted">📍 กำลังหาตำแหน่ง…</div>';
   navigator.geolocation.getCurrentPosition(async pos => {
     lat = pos.coords.latitude; lon = pos.coords.longitude; name = "ตำแหน่งปัจจุบัน";
     await weather(lat, lon, name);
   }, () => {
-    $("weather").innerHTML = '<div class="muted">ไม่สามารถเข้าถึงตำแหน่งได้ กรุณาอนุญาต Location</div>';
+    $("weather").innerHTML = '<div class="muted">ไม่สามารถเข้าถึงตำแหน่งได้</div>';
   }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 });
 };
 
@@ -420,27 +452,24 @@ async function loadNational() {
     ["นครราชสีมา", 14.9799, 102.0978]
   ];
   $("national").innerHTML = places.map((p, i) =>
-    `<div class="card"><b>${p[0]}</b><div id="n${i}" class="muted">กำลังดึงข้อมูล…</div></div>`
+    `<div class="card"><b>${p[0]}</b><div id="n${i}" class="muted">กำลังดึง…</div></div>`
   ).join("");
 
   await Promise.allSettled(places.map(async (p, i) => {
     try {
       const d = await fetchT(
         `https://api.open-meteo.com/v1/forecast?latitude=${p[1]}&longitude=${p[2]}` +
-        `&current=temperature_2m&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`,
-        {}, 8000);
+        `&current=temperature_2m&hourly=precipitation&forecast_days=3&timezone=Asia%2FBangkok`, {}, 8000);
       const r = (d.hourly?.precipitation || []).slice(0, 48)
         .reduce((x, y) => x + (Number(y) || 0), 0);
-      const lv = floodLevelFromRain(r);
+      const lv = floodLevelFromRain(r, null);
       const node = $("n" + i);
-      if (node) {
-        node.innerHTML =
-          `${Math.round(d.current?.temperature_2m ?? 0)}°C • ฝน 48 ชม. ${r.toFixed(1)} มม.<br>` +
-          `<b style="color:${lv.color}">${lv.text} (${lv.label})</b>`;
-      }
+      if (node) node.innerHTML =
+        `${Math.round(d.current?.temperature_2m ?? 0)}°C • ฝน 48 ชม. ${r.toFixed(1)} มม.<br>` +
+        `<b style="color:${lv.color}">${lv.text} (${lv.label})</b>`;
     } catch (e) {
       const node = $("n" + i);
-      if (node) node.textContent = "โหลดข้อมูลไม่ได้";
+      if (node) node.textContent = "โหลดไม่ได้";
     }
   }));
 }
@@ -450,4 +479,4 @@ weather(lat, lon, name);
 setInterval(() => weather(lat, lon, name), 600000);
 </script>
 </body>
-</html>
+                                                     </html>
